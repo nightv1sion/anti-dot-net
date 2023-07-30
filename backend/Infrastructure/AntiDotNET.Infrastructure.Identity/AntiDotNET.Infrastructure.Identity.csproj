@@ -7,13 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
-      <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.9" />
+      <ProjectReference Include="..\..\Core\AntiDotNET.Application\AntiDotNET.Application.csproj" />
+      <ProjectReference Include="..\..\Core\AntiDotNET.Domain\AntiDotNET.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Core\AntiDotNET.Application\AntiDotNET.Application.csproj" />
-      <ProjectReference Include="..\..\Core\AntiDotNET.Domain\AntiDotNET.Domain.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
     </ItemGroup>
 
 </Project>

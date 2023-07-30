@@ -1,4 +1,5 @@
-﻿using AntiDotNET.Infrastructure.Identity.Configuration;
+﻿using AntiDotNET.Application.Configuration;
+using AntiDotNET.Infrastructure.Identity.Configuration;
 using AntiDotNET.Infrastructure.Persistence.ServiceConfiguration;
 
 namespace AntiDotNET.Presentation.WebAPI.Configuration;
@@ -14,6 +15,8 @@ public static class WebApplicationBuilderExtensions
 
         builder.Services.ConfigureDatabaseContext(builder.Configuration);
         builder.Services.RegisterIdentityServices();
+        builder.Services.AddApplicationServices();
+        builder.Logging.AddConsole();
 
         return builder;
     }

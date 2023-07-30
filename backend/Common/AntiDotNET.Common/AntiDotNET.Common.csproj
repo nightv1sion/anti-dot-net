@@ -4,7 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>AntidotNET.Common</RootNamespace>
+        <RootNamespace>AntiDotNET.Common</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.6.0" />
+    </ItemGroup>
 
 </Project>

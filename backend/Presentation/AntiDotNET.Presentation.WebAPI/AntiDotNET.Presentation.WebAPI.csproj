@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
           <PrivateAssets>all</PrivateAssets>
@@ -25,10 +26,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Infrastructure\AntiDotNET.Infrastructure.Identity\AntiDotNET.Infrastructure.Identity.csproj" />
       <ProjectReference Include="..\..\Infrastructure\AntiDotNET.Infrastructure.Persistence\AntiDotNET.Infrastructure.Persistence.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\" />
+      <ProjectReference Include="..\AntiDotNET.Presentation.WebFramework\AntiDotNET.Presentation.WebFramework.csproj" />
     </ItemGroup>
 
 </Project>

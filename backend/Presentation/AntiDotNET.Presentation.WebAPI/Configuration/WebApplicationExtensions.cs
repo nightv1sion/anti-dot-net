@@ -1,5 +1,6 @@
 ﻿using AntiDotNET.Infrastructure.Identity.Contracts;
 using AntiDotNET.Infrastructure.Persistence;
+using AntiDotNET.Presentation.WebFramework.Middlewares.ExceptionHandling;
 using Microsoft.EntityFrameworkCore;
 
 namespace AntiDotNET.Presentation.WebAPI.Configuration;
@@ -15,6 +16,8 @@ public static class WebApplicationExtensions
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.UseExceptionHandlingMiddleware();
 
         app.UseHttpsRedirection();
 

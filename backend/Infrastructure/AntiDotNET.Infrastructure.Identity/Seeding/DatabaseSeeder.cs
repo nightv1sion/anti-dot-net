@@ -25,8 +25,8 @@ public class DatabaseSeeder : IDatabaseSeeder
 
     public async Task SeedAsync()
     {
-        await SeedRolesAsync();
         await SeedUsersAsync();
+        await SeedRolesAsync();
     }
 
     private async Task SeedRolesAsync()
@@ -56,18 +56,27 @@ public class DatabaseSeeder : IDatabaseSeeder
 
     private async Task SeedUsersAsync()
     {
+        var adminUsername = _configuration["Identity:Administrator:Username"];
         if (!await _userManager.Users.AsNoTracking()
-                .AnyAsync(u => u.UserName != null && u.UserName.Equals(RolesConstants.AdministratorRole)))
+                .AnyAsync(u => u.UserName != null && u.UserName.Equals(adminUsername)))
         {
             var user = new User
             {
-                UserName = _configuration["Identity:Administrator:Username"],
+                UserName = adminUsername,
                 Email = _configuration["Identity:Administrator:Email"],
                 PhoneNumberConfirmed = true
             };
 
-            await  _userManager.CreateAsync(user, _configuration["Identity:Administrator:Password"]!);
-            await _userManager.AddToRoleAsync(user, RolesConstants.AdministratorRole);
+            var result = await  _userManager.CreateAsync(user, _configuration["Identity:Administrator:Password"]!);
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, RolesConstants.AdministratorRole);
+            }
+            else
+            {
+                throw new InvalidOperationException(String.Join("",
+                    result.Errors.Select(x => $"{x.Code}: {x.Description}")));
+            }
         }
     }
 }

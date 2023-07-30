@@ -12,8 +12,6 @@ public static class ServiceCollectionExtension
         this IServiceCollection services)
     {
         services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
-        services.AddScoped<RoleManager<User>>();
-        services.AddScoped<UserManager<IdentityRole>>();
         
         return services;
     }
